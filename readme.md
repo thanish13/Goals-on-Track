@@ -1,30 +1,44 @@
-# Goalsetter MERN app
+# Goals App
 
-This is the goalsetter app from the [Learn the MERN Stack](https://www.youtube.com/watch?v=-0exw-9YJBo) series on YouTube.
+A Goals App made using MERN Stack.
 
-## Usage
+## Features
 
-Rename the .envexample to .env and add your MONGO_URI
+- Multiple user support
+- Register New user
+- Create Goals (for each user)
+- Delete Goals (for each user)
 
 ### Install dependencies
 
 ```
 # Backend deps
 npm install
-
 # Frontend deps
 cd frontend
 npm install
 ```
 
-### Run Server
+### Usage
+
+To be executed from root folder
 
 ```
+# Run server
 npm run server
+# Run Frontend
+npm run client
+
+# Run both frontend and backend
+npm run dev
 ```
 
-## Demo
+## Screenshots
 
-I am not sure how long this will be up
+- Login Page
 
-https://mernappbrad.herokuapp.com/
+![Login Page](https://i.imgur.com/ftsBfUk.png)
+
+- Register Page
+
+![Register Page](https://i.imgur.com/NykRIYc.png)
