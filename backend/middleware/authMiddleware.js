@@ -1,38 +1,36 @@
-const jwt = require('jsonwebtoken');
-const asyncHandler = require('express-async-handler');
-const user = require('../models/userModel');
-const UserModel = require('../models/userModel');
+const jwt = require('jsonwebtoken')
+const asyncHandler = require('express-async-handler')
+const User = require('../models/userModel')
 
-const protect = asyncHandler( async (req, res, next) => {
-  let token;
+const protect = asyncHandler(async (req, res, next) => {
+  let token
 
-  // token format => Bearer 640d98f4098d(token)
-  if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith('Bearer')
+  ) {
     try {
+      // Get token from header
       token = req.headers.authorization.split(' ')[1]
 
-      //verify token
+      // Verify token
       const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
-      //Get User from the token
-      req.user = await UserModel.findById(decoded.id).select('-password')
+      // Get user from the token
+      req.user = await User.findById(decoded.id).select('-password')
 
-      //calling next piece of middleware if everything works fine uptill here
-      next();
+      next()
     } catch (error) {
-      console.error(error)
+      console.log(error)
       res.status(401)
       throw new Error('Not authorized')
     }
   }
 
-  //if no token at all
-  if(!token){
-    res.status(401);
+  if (!token) {
+    res.status(401)
     throw new Error('Not authorized, no token')
   }
 })
 
-module.exports = {
-  protect,
-}
+module.exports = { protect }

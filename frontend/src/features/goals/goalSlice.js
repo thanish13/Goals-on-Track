@@ -28,7 +28,7 @@ export const createGoal = createAsyncThunk(
   }
 )
 
-/// Get user goals
+// Get user goals
 export const getGoals = createAsyncThunk(
   'goals/getAll',
   async (_, thunkAPI) => {
