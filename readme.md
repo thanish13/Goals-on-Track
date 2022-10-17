@@ -1,4 +1,4 @@
-# Goals App
+# Goals on Track
 
 A Goals App made using MERN Stack.
 
